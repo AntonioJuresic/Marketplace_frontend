@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h1 class="text-center">Novi oglas</h1>
+            <br>
+
+            <form [formGroup]="newAdvertisementForm" (submit)="onSubmit()">
+                <div class="form-group">
+                    <label for="name">Ime oglasa:</label>
+                    <input type="text" class="form-control" name="name" id="name" formControlName="name" [ngClass]="{'is-invalid': ((name.dirty || name.touched) && name.invalid),
+                            'is-valid': ((name.dirty || name.touched) && name.valid) }">
+
+                    <div class="invalid-feedback">Molimo upišite ime oglasa</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Opis oglasa:</label>
+                    <textarea class="form-control" name="description" id="description" formControlName="description"
+                        [ngClass]="{'is-invalid': ((description.dirty || description.touched) && description.invalid),
+                        'is-valid': ((description.dirty || description.touched) && description.valid) }"></textarea>
+
+                    <div class="invalid-feedback">Molimo upišite opis oglasa</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-12 col-lg-6">
+                        <label for="description">Cijena oglasa:</label>
+                        <input type="number" class="form-control" name="price" id="price" min="0"
+                            formControlName="price" [ngClass]="{'is-invalid': ((price.dirty || price.touched) && price.invalid),
+                            'is-valid': ((price.dirty || price.touched) && price.valid) }">
+
+                        <div class="invalid-feedback">Molimo upišite cijenu oglasa</div>
+                    </div>
+
+                    <div class="form-group col-12 col-lg-6">
+                        <label for="conditionFK">Odabir stanja:</label>
+                        <select class="form-control" name="conditionFK" id="conditionFK" formControlName="conditionFK"
+                            [ngClass]="{'is-invalid': ((conditionFK.dirty || conditionFK.touched) && (conditionFK.invalid || conditionFK.value == 'Odabir stanja')),
+                            'is-valid': ((conditionFK.dirty || conditionFK.touched) && conditionFK.valid) }">
+
+                            <option selected>Odabir stanja</option>
+                            <option *ngFor="let condition of conditions">{{condition.conditionName}}</option>
+                        </select>
+
+                        <div class="invalid-feedback">Molimo Vas odaberite stanje proizvoda</div>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-12 col-lg-6">
+                        <label for="categoryNameFK">Odabir kategorije:</label>
+                        <select class="form-control" name="categoryNameFK" id="categoryNameFK"
+                            formControlName="categoryNameFK" [ngClass]="{'is-invalid': ((categoryNameFK.dirty || categoryNameFK.touched) && (categoryNameFK.invalid || categoryNameFK.value == 'Odabir kategorije')),
+                            'is-valid': ((categoryNameFK.dirty || categoryNameFK.touched) && categoryNameFK.valid) }">
+
+                            <option selected>Odabir kategorije</option>
+                            <option *ngFor="let category of categories">{{category.categoryName}}</option>
+                        </select>
+
+                        <div class="invalid-feedback">Molimo Vas odaberite kategoriju proizvoda</div>
+                    </div>
+
+                    <div class="form-group col-12 col-lg-6">
+                        <label for="placeNameFK">Lokacija proizvoda:</label>
+                        <select class="form-control" name="placeNameFK" id="placeNameFK" formControlName="placeNameFK"
+                            [ngClass]="{'is-invalid': ((placeNameFK.dirty || placeNameFK.touched) && (placeNameFK.invalid || placeNameFK.value == 'Odabir mjesta')),
+                            'is-valid': ((placeNameFK.dirty || placeNameFK.touched) && placeNameFK.valid) }">
+
+                            <option selected>Odabir mjesta</option>
+                            <option *ngFor="let place of places">{{place.placeName}}</option>
+                        </select>
+
+                        <div class="invalid-feedback">Molimo Vas odaberite lokaciju proizvoda</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Korisničko ime prodavača:</label>
+                    <input class="form-control" type="text" placeholder="{{advertisement.sellerUsernameFK}}" readonly>
+                </div>
+
+                <br>
+                <br>
+
+                <div class="col text-center">
+                    <input type="submit" class="btn btn-primary" value="Izmjeni oglas"
+                        [disabled]="!newAdvertisementForm.valid">
+                </div>
+
+                <br>
+                <br>
+
+                <a routerLink="/" routerLinkActive="active">Odustani</a>
+
+                <br>
+                <br>
+            </form>
+        </div>
+
+        <div class="col-lg-4"></div>
+    </div>
+</div>

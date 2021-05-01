@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Korisnici</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>i</th>
+        <th>_id</th>
+
+        <th>username</th>
+        <th>email</th>
+        <th>admin</th>
+
+        <th>name</th>
+        <th>surname</th>
+        <th>dateOfBirth</th>
+
+        <th>streetName</th>
+        <th>streetNumber</th>
+        <th>placeNameFK</th>
+        
+        <th>getUser(i)</th>
+        <th>deleteUser(i)</th>
+    </tr>
+
+    <tr *ngFor="let user of users; let i=index;">
+        <td>{{i+1}}</td>
+        <td>{{user._id}}</td>
+
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.admin}}</td>
+
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.dateOfBirth}}</td>
+
+        <td>{{user.streetName}}</td>
+        <td>{{user.streetNumber}}</td>
+        <td>{{user.placeNameFK}}</td>
+
+        <td><button class="btn btn-success" (click)="getUser(i)">Ispiši korisnika</button></td>
+        <td><button class="btn btn-danger" (click)="deleteUser(i)">Izbriši korisnika</button></td>
+    </tr>
+</table>

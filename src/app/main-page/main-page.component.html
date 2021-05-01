@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <div class="form-group">
+                <label>
+                    <p class="font-weight-bold">Odabir kategorije:</p>
+                </label>
+                <select class="form-control" [(ngModel)]="QueryCategory">
+                    <option selected value="">Sve kategorije</option>
+                    <option *ngFor="let category of categories">{{category.categoryName}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <p class="font-weight-bold">Pretraga po imenu:</p>
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="QueryName">
+            </div>
+
+            <br>
+
+            <label>
+                <p class="font-weight-bold">Pretraga po cijeni:</p>
+            </label>
+
+            <div class="form-group">
+                <p>Najniža cijena:</p>
+                <input type="number" class="form-control" min="0" [(ngModel)]="QueryMinimalPrice">
+
+                <p>Najviša cijena:</p>
+                <input type="number" class="form-control" min="0" [(ngModel)]="QueryMaximalPrice">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label>
+                    <p class="font-weight-bold">Odabir stanja:</p>
+                </label>
+                <select class="form-control" [(ngModel)]="QueryCondition">
+                    <option selected value="">Bilo koje stanje</option>
+                    <option *ngFor="let condition of conditions">{{condition.conditionName}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <p class="font-weight-bold">Pretraga po lokaciji:</p>
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="QueryPlace">
+            </div>
+
+        </div>
+
+        <div class="col-10">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Kategorija</th>
+                        <th scope="col">Naziv</th>
+                        <th scope="col">Cijena</th>
+                        <th scope="col">Stanje</th>
+                        <th scope="col">Lokacija</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr
+                        *ngFor="let advertisement of advertisements | filter: 'name' : QueryName | filter: 'categoryNameFK' : QueryCategory  | filterPrice: 'price' : [QueryMinimalPrice, QueryMaximalPrice] | filter: 'conditionNameFK' : QueryCondition | filter: 'placeNameFK' : QueryPlace">
+                        <td>{{advertisement.categoryNameFK}}</td>
+                        <td>
+                            <a [routerLink]="['oglas/', advertisement._id]">{{advertisement.name}}</a>
+                        </td>
+                        <td>{{advertisement.price}}</td>
+                        <td>{{advertisement.conditionNameFK}}</td>
+                        <td>{{advertisement.placeNameFK}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

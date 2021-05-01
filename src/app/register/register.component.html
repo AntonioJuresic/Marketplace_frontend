@@ -1,0 +1,152 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h1 class="text-center">Registracija</h1>
+            <br>
+            
+            <a routerLink="/prijava" routerLinkActive="active">
+                <p style="text-align: center;">
+                    Već imate korisnički profil? Idite na prijavu</p>
+            </a>
+            <br>
+
+            <form [formGroup]="registerForm" (submit)="onSubmit()">
+
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label for="username">Korisničko ime:</label>
+                            <input type="text" class="form-control" name="username" id="username"
+                                formControlName="username" [ngClass]="{'is-invalid': ((username.dirty || username.touched) && username.invalid),
+                            'is-valid': ((username.dirty || username.touched) && username.valid) }">
+
+                            <div class="invalid-feedback">Korisnicko ime mora biti dulje od 4 znaka</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="email" id="email" formControlName="email"
+                                [ngClass]="{'is-invalid': ((email.dirty || email.touched) && email.invalid),
+                            'is-valid': ((email.dirty || email.touched) && email.valid) }">
+
+                            <div class="invalid-feedback">Molimo Vas upišite valjanu email adresu</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password1">Šifra:</label>
+                            <input type="password" class="form-control" name="password1" id="password1"
+                                formControlName="password1" [ngClass]="{'is-invalid': ((password1.dirty || password1.touched)
+                            && (password1.invalid || password1.value != password2.value)),
+                            'is-valid': ((password1.dirty || password1.touched) && password1.valid) }">
+
+                            <div class="invalid-feedback">
+                                <div *ngIf="(password1.dirty || password1.touched) && password1.invalid">
+                                    Molimo Vas upišite šifru
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password2">Ponovljena šifra:</label>
+                            <input type="password" class="form-control" name="password2" id="password2"
+                                formControlName="password2" [ngClass]="{'is-invalid': ((password2.dirty || password2.touched)
+                            && (password2.invalid || password1.value != password2.value)),
+                            'is-valid': ((password2.dirty || password2.touched) && password2.valid) }">
+
+                            <div class="invalid-feedback">
+                                <div *ngIf="(password2.dirty || password2.touched) && password2.invalid">
+                                    Molimo Vas ponovite upis šifre
+                                </div>
+
+                                <div
+                                    *ngIf="(password2.dirty || password2.touched) && password1.value != password2.value">
+                                    Šifre se ne popudaraju
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="admin" id="admin"
+                                formControlName="admin">
+                            <label class="form-check-label" for="admin"> Admin </label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label for="name">Ime:</label>
+                            <input type="text" class="form-control" name="name" id="name" formControlName="name"
+                                [ngClass]="{'is-invalid': ((name.dirty || name.touched) && name.invalid),
+                                'is-valid': ((name.dirty || name.touched) && name.valid) }">
+
+                            <div class="invalid-feedback">Molimo Vas upišite Vaše ime</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="surname">Prezime:</label>
+                            <input type="text" class="form-control" name="surname" id="surname"
+                                formControlName="surname" [ngClass]="{'is-invalid': ((surname.dirty || surname.touched) && surname.invalid),
+                                'is-valid': ((surname.dirty || surname.touched) && surname.valid) }">
+
+                            <div class="invalid-feedback">Molimo Vas upišite Vaše prezime</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateOfBirth">Datum rođenja:</label>
+                            <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth"
+                                formControlName="dateOfBirth" [ngClass]="{'is-invalid': ((dateOfBirth.dirty || dateOfBirth.touched) && dateOfBirth.invalid),
+                                'is-valid': ((dateOfBirth.dirty || dateOfBirth.touched) && dateOfBirth.valid) }">
+
+                            <div class="invalid-feedback">Molimo Vas odaberite Vaš datum rođenja</div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-12 col-lg-8">
+                                <label for="streetName">Ime ulice:</label>
+                                <input type="text" class="form-control" name="streetName" id="streetName"
+                                    formControlName="streetName" [ngClass]="{'is-invalid': ((streetName.dirty || streetName.touched) && streetName.invalid),
+                                        'is-valid': ((streetName.dirty || streetName.touched) && streetName.valid) }">
+
+                                <div class="invalid-feedback">Molimo Vas upišite ime Vaše ulice</div>
+                            </div>
+
+                            <div class="form-group col-12 col-lg-4">
+                                <label for="streetNumber">Kućni broj:</label>
+                                <input type="text" class="form-control" name="streetNumber" id="streetNumber"
+                                    formControlName="streetNumber"
+                                    [ngClass]="{'is-invalid': ((streetNumber.dirty || streetNumber.touched) && streetNumber.invalid),
+                                        'is-valid': ((streetNumber.dirty || streetNumber.touched) && streetNumber.valid) }">
+
+                                <div class="invalid-feedback">Molimo Vas upišite broj Vaše adrese</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="placeNameFK">Naziv mjesta:</label>
+                            <select class="form-control" name="placeNameFK" id="placeNameFK"
+                                formControlName="placeNameFK" [ngClass]="{'is-invalid': ((placeNameFK.dirty || placeNameFK.touched) && (placeNameFK.invalid || placeNameFK.value == 'Odabir mjesta')),
+                                    'is-valid': ((placeNameFK.dirty || placeNameFK.touched) && placeNameFK.valid) }">
+
+                                <option selected>Odabir mjesta</option>
+                                <option *ngFor="let place of places">{{place.placeName}}</option>
+                            </select>
+
+                            <div class="invalid-feedback">Molimo Vas odaberite Vaše mjesto</div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+                <div class="col text-center">
+                    <input type="submit" class="btn btn-primary" value="Registriraj me"
+                        [disabled]="!registerForm.valid">
+                </div>
+            </form>
+        </div>
+
+        <div class="col-lg-4"></div>
+    </div>
+</div>

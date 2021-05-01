@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div *ngIf="user">
+                <h1 style="font-weight: lighter;">Korisničko ime:
+                    <span style="font-weight: bold;">{{user.username}}</span>
+                </h1>
+                <br>
+                <h2 style="font-weight: lighter;">email:
+                    <span style="font-weight: bold;">{{user.email}}</span>
+                </h2>
+                <br>
+                <h2 style="font-weight: lighter;">Admin:
+                    <span style="font-weight: bold;">{{user.admin}}</span>
+                </h2>
+                <br>
+                <h2 style="font-weight: lighter;">Ime:
+                    <span style="font-weight: bold;">{{user.name}}</span>
+                </h2>
+                <br>
+                <h2 style="font-weight: lighter;">Prezime:
+                    <span style="font-weight: bold;">{{user.surname}}</span>
+                </h2>
+                <br>
+                <h2 style="font-weight: lighter;">Datum rođenja:
+                    <span style="font-weight: bold;">{{user.dateOfBirth}}</span>
+                </h2>
+                <br>
+                <h2 style="font-weight: lighter;">Adresa:
+                    <span style="font-weight: bold;">{{user.streetName}} {{user.streetNumber}},
+                        {{user.placeNameFK}}</span>
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>

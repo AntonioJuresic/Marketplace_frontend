@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Oglasi</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>i</th>
+        <th>_id</th>
+
+        <th>name</th>
+        <th>description</th>
+        <th>price</th>
+
+        <th>conditionNameFK</th>
+        <th>categoryNameFK</th>
+        <th>placeNameFK</th>
+
+        
+        <th>sellerUsernameFK</th>
+        <th>seller_idFK</th>
+        
+        <th>getAdvertisement(i)</th>
+        <th>deleteAdvertisement(i)</th>
+    </tr>
+
+    <tr *ngFor="let advertisement of advertisements; let i=index;">
+        <td>{{i+1}}</td>
+        <td>{{advertisement._id}}</td>
+
+        <td><a [routerLink]="['../oglas/', advertisement._id]">{{advertisement.name}}</a></td>
+        <td>{{advertisement.description}}</td>
+        <td>{{advertisement.price}}</td>
+
+        <td>{{advertisement.conditionNameFK}}</td>
+        <td>{{advertisement.categoryNameFK}}</td>
+        <td>{{advertisement.placeNameFK}}</td>
+
+        <td>{{advertisement.sellerUsernameFK}}</td>
+        <td>{{advertisement.seller_idFK}}</td>
+
+        <td><button class="btn btn-success" (click)="getAdvertisement(i)">Ispiši oglas</button></td>
+        <td><button class="btn btn-danger" (click)="deleteAdvertisement(i)">Izbriši oglas</button></td>
+    </tr>
+</table>

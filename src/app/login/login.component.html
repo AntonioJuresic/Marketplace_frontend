@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row" style="height: 75vh;">
+        <div class="d-none d-lg-block col-lg-1"></div>
+
+        <div class="col-12 col-lg-4 align-self-center">
+            <br>
+            <h1 class="text-center">Prijava</h1>
+            <br>
+
+            <a routerLink="/registracija" routerLinkActive="active">
+                <p style="text-align: center;">Nemate korisnički profil? Idite na
+                registraciju</p></a>
+            <br>
+
+            <form [formGroup]="registerForm" (submit)="onSubmit()">
+                <div class="form-group">
+                    <label for="username">Korisničko ime:</label>
+                    <input type="text" class="form-control" name="username" id="username" formControlName="username"
+                        [ngClass]="{'is-invalid': ((username.dirty || username.touched) && username.invalid),
+                        'is-valid': ((username.dirty || username.touched) && username.valid) }">
+
+                    <div class="invalid-feedback">Molimo Vas upišite Vaše korisničko ime</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Lozinka:</label>
+                    <input type="password" class="form-control" name="password" id="password" formControlName="password"
+                        [ngClass]="{'is-invalid': ((password.dirty || password.touched) && password.invalid),
+                        'is-valid': ((password.dirty || password.touched) && password.valid) }">
+
+                    <div class="invalid-feedback">Molimo Vas upišite Vašu šifru</div>
+                </div>
+
+                <div class="col text-center">
+                    <input type="submit" class="btn btn-primary" value="Prijavi me" [disabled]="!registerForm.valid">
+                </div>
+
+                <div *ngIf="errorMessage">
+                    <p style="text-align: center; color: red;">{{errorMessage}}</p>
+                    <br>
+                </div>
+            </form>
+        </div>
+
+        <div class="d-none d-lg-block col-lg-1"></div>
+
+        <div class="d-none d-lg-block col-lg-5 align-self-center">
+            <img src="assets/img/login.webp" alt="" style="width: 100%;">
+        </div>
+
+        <div class="d-none d-lg-block col-lg-1"></div>
+    </div>
+</div>

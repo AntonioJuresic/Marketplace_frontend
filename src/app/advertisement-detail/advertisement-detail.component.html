@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div *ngIf="advertisement">
+                <h1>{{advertisement.name}}</h1>
+                <br>
+                <h2 style="font-weight: lighter;">Cijena: <span style="font-weight: bold;">{{advertisement.price}}
+                        HRK</span></h2>
+                <br>
+                <h2 style="font-weight: lighter;">Opis: <span
+                        style="font-weight: bold;">{{advertisement.description}}</span></h2>
+                <br>
+                <h2 style="font-weight: lighter;">Stanje: <span
+                        style="font-weight: bold;">{{advertisement.conditionNameFK}}</span></h2>
+                <br>
+                <h2 style="font-weight: lighter;">Lokacija: <span
+                        style="font-weight: bold;">{{advertisement.placeNameFK}}</span></h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<hr>
+<div *ngIf="advertisement">
+    <app-user-detail [_id]="advertisement.seller_idFK"></app-user-detail>
+</div>

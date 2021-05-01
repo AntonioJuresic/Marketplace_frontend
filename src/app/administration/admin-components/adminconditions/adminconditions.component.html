@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Stanja</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>i</th>
+        <th>_id</th>
+        <th>conditionName</th>
+        <th>getCondition(i)</th>
+        <th>sendToEdit(condition)</th>
+        <th>deleteCondition(i)</th>
+    </tr>
+
+    <tr *ngFor="let condition of conditions; let i=index;">
+        <td>{{i+1}}</td>
+
+        <td>{{condition._id}}</td>
+        <td>{{condition.conditionName}}</td>
+
+        <td><button class="btn btn-success" (click)="getCondition(i)">Ispiši stanje</button></td>
+        <td><button class="btn btn-warning" (click)="sendToEdit(condition)">Uredi stanje</button></td>
+        <td><button class="btn btn-danger" (click)="deleteCondition(i)">Izbriši stanje</button></td>
+    </tr>
+</table>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h3>Novo stanje</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="newConditionName">
+                    <br>
+                    <button class="btn btn-info" (click)="addCondition()">Dodaj</button>
+                </div>
+        </div>
+
+        <div class="col-6">
+            <h3>Uredi stanje: {{edit_id}}</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="editConditionName">
+                    <br>
+                    <button class="btn btn-info"
+                        (click)="editCondition({_id : this.edit_id, conditionName : this.editConditionName})">Uredi</button>
+                </div>
+        </div>
+    </div>
+</div>
